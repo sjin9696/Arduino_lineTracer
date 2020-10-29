@@ -6,6 +6,11 @@
 #define Left_Plus   6
 #define Left_Minus  7
 
+#define sensor_led1 8
+#define sensor_led2 9
+#define sensor_led3 10
+#define sensor_led4 11
+
 #define STOP  000
 #define FRONT 111
 #define BACK  222

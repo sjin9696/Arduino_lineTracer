@@ -1,11 +1,6 @@
 #include "Arduino.h"
 #include "libTest.h"
 
-#define LINE_IN 1
-#define LINE_OUT 0
-
-#define serialMonitor 9600
-#define sensor_EA 4
 int sensor_arr[sensor_EA] = {A0,A1,A2,A3};
 
 String sensor_print(int *val){

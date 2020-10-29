@@ -1,23 +1,6 @@
 #include "Arduino.h"
 #include "Car.h"
 
-#define Right_Minus 4
-#define Right_Plus  5
-#define Left_Minus  6
-#define Left_Plus   7
-
-#define sensor_led1 8
-#define sensor_led2 9
-#define sensor_led3 10
-#define sensor_led4 11
-
-
-#define STOP  000
-#define FRONT 111
-#define BACK  222
-#define RIGHT 333
-#define LEFT  444
-
 void CarInit() {
   Serial.begin(9600);
   pinMode(Right_Plus, OUTPUT);
