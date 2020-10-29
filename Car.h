@@ -13,6 +13,7 @@
 #define LEFT  444
 
 void CarInit();
+void led_setting(int a, int b, int c, int d);
 void Right_Stop();
 void Left_Stop();
 void Right_Front();

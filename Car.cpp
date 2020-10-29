@@ -6,6 +6,12 @@
 #define Left_Minus  6
 #define Left_Plus   7
 
+#define sensor_led1 8
+#define sensor_led2 9
+#define sensor_led3 10
+#define sensor_led4 11
+
+
 #define STOP  000
 #define FRONT 111
 #define BACK  222
@@ -18,7 +24,17 @@ void CarInit() {
   pinMode(Right_Minus, OUTPUT);
   pinMode(Left_Plus, OUTPUT);
   pinMode(Left_Minus, OUTPUT);
-  
+
+  pinMode(sensor_led1, OUTPUT);
+  pinMode(sensor_led2, OUTPUT);
+  pinMode(sensor_led3, OUTPUT);
+  pinMode(sensor_led4, OUTPUT);
+}
+void led_setting(int a, int b, int c, int d){
+  digitalWrite(sensor_led1, a);
+  digitalWrite(sensor_led2, b);
+  digitalWrite(sensor_led3, c);
+  digitalWrite(sensor_led4, d);
 }
 void Right_Stop(){
   //Serial.println("Right_Stop");
@@ -94,22 +110,29 @@ void Controler(int n_commend){
 
 void Car_loop(String result) {
   //String result = Sensor_Loop();
+  led_setting(0, 0, 0, 0);
   if(result=="1001 라인전진"){
       Controler(FRONT);
+      led_setting(1, 0, 0, 1);
   }
   else if(result=="0010 라인살짝벗어남 왼쪽"){
       Controler(LEFT);
+      led_setting(0, 0, 1, 0);
   }
    else if(result=="0001 라인많이OUT 왼쪽커브"){
       Controler(LEFT);
+      led_setting(0, 0, 0, 1);
   }
    else if(result=="0100 라인살짝벗어남 오른쪽"){
       Controler(RIGHT);
+      led_setting(0, 1, 0, 0);
   }
    else if(result=="1000 라인많이OUT 오른쪽"){
       Controler(RIGHT);
+      led_setting(1, 0, 0, 0);
   }
   else if(result=="1111 라인없음 좌로회전 전진 우로회전 전진"){
+      led_setting(1, 1, 1, 1);
       Controler(FRONT);
       //delay(100);
       Controler(LEFT);
