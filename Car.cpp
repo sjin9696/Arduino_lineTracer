@@ -114,13 +114,16 @@ void Controler(int n_commend){
 void Car_loop(String result) {
   //String result = Sensor_Loop();
  // led_setting(0, 0, 0, 0);
+ //해결해야될 문제., 라인을 벗어나면 제자리에서 돌아서 라인을 찾도록 하자.  급격한 커브 해결 가능. 
+ // 왼쪽 오른쪽 지시 가능.
   if(result=="1001 라인전진"){
-      Controler(FRONT);
-      led_setting(1, 0, 0, 1);
-  }
+        Controler(FRONT);
+        led_setting(1, 0, 0, 1);
+      }
   else if(result=="1011 라인살짝벗어남 왼쪽"){
       Controler(LEFT);
       led_setting(1, 0, 1, 1);
+      
   }
   else if(result=="0011 라인살짝벗어남 왼쪽"){
       Controler(LEFT);
@@ -153,14 +156,6 @@ void Car_loop(String result) {
   else if(result=="1111 라인없음 좌로회전 전진 우로회전 전진"){
       led_setting(1, 1, 1, 1);
       Controler(LEFT);
-      //delay(2000);
-      Controler(FRONT);
-      //delay(1000);
-      Controler(RIGHT);
-      //delay(2000);
-      Controler(FRONT);
-      //delay(1000);
-      Controler(BACK);
   }
   else if(result=="0000 전부 검은색 정지! "){
       led_setting(0, 0, 0, 0);
