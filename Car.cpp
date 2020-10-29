@@ -152,16 +152,15 @@ void Car_loop(String result) {
   }
   else if(result=="1111 라인없음 좌로회전 전진 우로회전 전진"){
       led_setting(1, 1, 1, 1);
-      Controler(FRONT);
-      //delay(100);
       Controler(LEFT);
-      //delay(100);
+      //delay(2000);
       Controler(FRONT);
-      //delay(100);
+      //delay(1000);
       Controler(RIGHT);
-      //delay(100);
+      //delay(2000);
+      Controler(FRONT);
+      //delay(1000);
       Controler(BACK);
-      //delay(100);
   }
   else if(result=="0000 전부 검은색 정지! "){
       led_setting(0, 0, 0, 0);
