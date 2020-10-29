@@ -67,27 +67,27 @@ void Left_Back(){
   digitalWrite(Left_Minus, HIGH);
 }
 void Stop(){
-  Serial.println("Front");
-    Right_Front();
-    Left_Front();
+    //Serial.println("Stop");
+    Right_Stop();
+    Left_Stop();
 }
 void Front(){
-  Serial.println("Front");
+    //Serial.println("Front");
     Right_Front();
     Left_Front();
 }
 void Back(){
-  Serial.println("Back");
+    //Serial.println("Back");
     Right_Back();
     Left_Back();
 }
 void Left(){
-  Serial.println("left");
+  //Serial.println("left");
   Left_Front();
   Right_Back();
 }
 void Right(){
-  Serial.println("Right");
+  //Serial.println("Right");
   Right_Front();
   Left_Back();
 }
@@ -95,6 +95,9 @@ void Controler(int n_commend){
   switch(n_commend){
     case FRONT:
       Front();
+      break;
+    case STOP:
+      Stop();
       break;
     case BACK:
       Back();
@@ -110,26 +113,42 @@ void Controler(int n_commend){
 
 void Car_loop(String result) {
   //String result = Sensor_Loop();
-  led_setting(0, 0, 0, 0);
+ // led_setting(0, 0, 0, 0);
   if(result=="1001 라인전진"){
       Controler(FRONT);
       led_setting(1, 0, 0, 1);
   }
-  else if(result=="0010 라인살짝벗어남 왼쪽"){
+  else if(result=="1011 라인살짝벗어남 왼쪽"){
       Controler(LEFT);
-      led_setting(0, 0, 1, 0);
+      led_setting(1, 0, 1, 1);
   }
-   else if(result=="0001 라인많이OUT 왼쪽커브"){
+  else if(result=="0011 라인살짝벗어남 왼쪽"){
+      Controler(LEFT);
+      led_setting(0, 0, 1, 1);
+  }
+  else if(result=="1100 라인살짝벗어남 오른쪽"){
+      Controler(RIGHT);
+      led_setting(1, 1, 0, 0);
+  }
+  else if(result=="1101 라인살짝벗어남 오른쪽"){
+      Controler(RIGHT);
+      led_setting(1, 1, 0, 1);
+  }
+  else if(result=="0001 라인많이OUT 왼쪽커브"){
       Controler(LEFT);
       led_setting(0, 0, 0, 1);
   }
-   else if(result=="0100 라인살짝벗어남 오른쪽"){
-      Controler(RIGHT);
-      led_setting(0, 1, 0, 0);
+  else if(result=="0001 라인많이OUT 왼쪽커브"){
+      Controler(LEFT);
+      led_setting(0, 1, 1, 1);
   }
-   else if(result=="1000 라인많이OUT 오른쪽"){
+  else if(result=="1000 라인많이OUT 오른쪽"){
       Controler(RIGHT);
       led_setting(1, 0, 0, 0);
+  }
+  else if(result=="1110 라인많이OUT 오른쪽"){
+      Controler(RIGHT);
+      led_setting(1, 1, 1, 0);
   }
   else if(result=="1111 라인없음 좌로회전 전진 우로회전 전진"){
       led_setting(1, 1, 1, 1);
@@ -144,7 +163,11 @@ void Car_loop(String result) {
       Controler(BACK);
       //delay(100);
   }
+  else if(result=="0000 전부 검은색 정지! "){
+      led_setting(0, 0, 0, 0);
+      Controler(STOP);
+  }
   //delay(100);
-  Controler(FRONT);
+  //Controler(FRONT);
   //delay(100);
 }

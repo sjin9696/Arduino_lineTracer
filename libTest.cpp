@@ -20,32 +20,40 @@ bool Line(int n){
 }
 
 String Result_Print(int *A){
-  /////
-  if(Line(A[0]) && !Line(A[1]) && !Line(A[2]) && Line(A[3])){
+  /////!A <= 1, A <= 0
+  if(Line(!A[0]) && Line(A[1]) && Line(A[2]) && !Line(A[3])){
     return "1001 라인전진";  
   }
-  if(!Line(A[0]) && !Line(A[1]) && Line(A[2]) && !Line(A[3])){
-    return "0010 라인살짝벗어남 왼쪽";  
+  if(Line(!A[0]) && Line(A[1]) && !Line(A[2]) && !Line(A[3])){
+    return "1011 라인살짝벗어남 왼쪽";  
   }
-  if(!Line(A[0]) && !Line(A[1]) && Line(A[2]) && !Line(A[3])){
-    return "0100 라인살짝벗어남 오른쪽";  
+  if(Line(A[0]) && Line(A[1]) && !Line(A[2]) && !Line(A[3])){
+    return "0011 라인살짝벗어남 왼쪽";  
   }
-  if(!Line(A[0]) && !Line(A[1]) && !Line(A[2]) && Line(A[3])){
+  if(Line(!A[0]) && !Line(A[1]) && Line(A[2]) && Line(A[3])){
+    return "1100 라인살짝벗어남 오른쪽";  
+  }
+  if(Line(!A[0]) && !Line(A[1]) && Line(A[2]) && !Line(A[3])){
+    return "1101 라인살짝벗어남 오른쪽";  
+  }
+  if(Line(A[0]) && Line(A[1]) && Line(A[2]) && !Line(A[3])){
     return "0001 라인많이OUT 왼쪽커브";  
   }
   if(Line(A[0]) && !Line(A[1]) && !Line(A[2]) && !Line(A[3])){
+    return "0111 라인많이OUT 왼쪽커브";  
+  }
+  if(!Line(A[0]) && Line(A[1]) && Line(A[2]) && Line(A[3])){
     return "1000 라인많이OUT 오른쪽";  
   }
-  if(Line(A[0]) && Line(A[1]) && Line(A[2]) && Line(A[3])){
+  if(Line(!A[0]) && !Line(A[1]) && !Line(A[2]) && Line(A[3])){
+    return "1110 라인많이OUT 오른쪽";  
+  }
+  if(!Line(A[0]) && !Line(A[1]) && !Line(A[2]) && !Line(A[3])){
     return "1111 라인없음 좌로회전 전진 우로회전 전진";  
   }
-  if(Line(!A[0]) && !Line(A[1]) && !Line(A[2]) && !Line(A[3])){
+  if(Line(A[0]) && Line(A[1]) && Line(A[2]) && Line(A[3])){
     return "0000 전부 검은색 정지! ";      
   }
-  //1110
-  //0111
-  //1000
-  //0001
   return "def";
 }
 
@@ -67,7 +75,7 @@ void Init_Setup() {
 String Sensor_Loop() {
   int val_arr[sensor_EA] = {0};
   Init(val_arr);
-  Serial.println(sensor_print(val_arr));
+  //Serial.println(sensor_print(val_arr));
   Serial.println(Result_Print(val_arr));
   return Result_Print(val_arr);
 }// void loop() 끝
