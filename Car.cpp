@@ -1,10 +1,10 @@
 #include "Arduino.h"
 #include "Car.h"
 
-#define Right_Plus  4
-#define Right_Minus 5
-#define Left_Plus   6
-#define Left_Minus  7
+#define Right_Minus 4
+#define Right_Plus  5
+#define Left_Minus  6
+#define Left_Plus   7
 
 #define STOP  000
 #define FRONT 111
@@ -111,17 +111,17 @@ void Car_loop(String result) {
   }
   else if(result=="1111 라인없음 좌로회전 전진 우로회전 전진"){
       Controler(FRONT);
-      delay(3000);
+      //delay(100);
       Controler(LEFT);
-      delay(300);
+      //delay(100);
       Controler(FRONT);
-      delay(3000);
+      //delay(100);
       Controler(RIGHT);
-      delay(300);
+      //delay(100);
       Controler(BACK);
-      delay(1000);
+      //delay(100);
   }
-  delay(100);
+  //delay(100);
   Controler(FRONT);
-  delay(500);
+  //delay(100);
 }

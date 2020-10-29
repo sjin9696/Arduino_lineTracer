@@ -6,7 +6,7 @@
 
 #define serialMonitor 9600
 #define sensor_EA 4
-int sensor_arr[sensor_EA] = {8,9,10,11};
+int sensor_arr[sensor_EA] = {A0,A1,A2,A3};
 
 String sensor_print(int *val){
   return ("↖ [" + String(0) + "] :"+ val[0])+
@@ -40,7 +40,7 @@ String Result_Print(int *A){
     return "1111 라인없음 좌로회전 전진 우로회전 전진";  
   }
   if(Line(!A[0]) && !Line(A[1]) && !Line(A[2]) && !Line(A[3])){
-    return "0000 전부 검은색 정지! ";  
+    return "0000 전부 검은색 정지! ";      
   }
   //1110
   //0111
