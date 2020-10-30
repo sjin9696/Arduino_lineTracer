@@ -1,5 +1,5 @@
-#ifndef libTest_h
-#define libTest_h
+#ifndef IR_sensor_h
+#define IR_sensor_h
 
 #define LINE_IN 1
 #define LINE_OUT 0

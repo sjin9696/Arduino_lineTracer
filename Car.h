@@ -6,10 +6,8 @@
 #define Left_Plus   6
 #define Left_Minus  7
 
-#define sensor_led1 8
-#define sensor_led2 9
-#define sensor_led3 10
-#define sensor_led4 11
+#define Right_PWM 9
+#define Left_PWM  10
 
 #define STOP  000
 #define FRONT 111
@@ -18,7 +16,6 @@
 #define LEFT  444
 
 void CarInit();
-void led_setting(int a, int b, int c, int d);
 void Right_Stop();
 void Left_Stop();
 void Right_Front();
