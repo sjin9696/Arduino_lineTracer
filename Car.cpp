@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include "Car.h"
 
 void CarInit() {

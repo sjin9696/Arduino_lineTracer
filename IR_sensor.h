@@ -1,6 +1,8 @@
 #ifndef IR_sensor_h
 #define IR_sensor_h
 
+#include "Arduino.h"
+
 #define LINE_IN 1
 #define LINE_OUT 0
 

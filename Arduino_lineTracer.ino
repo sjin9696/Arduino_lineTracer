@@ -1,6 +1,4 @@
-#include "IR_sensor.h"
 #include "Car.h"
-#include "BT.h"
 
 void setup() {
   pwd_setup();
@@ -11,7 +9,8 @@ void setup() {
 void loop() {
   String result = Sensor_Loop();
   Car_loop(result);
-  
+  Serial.print("LEFT : ");Serial.print(Analog_Sensor(LEFT_PIN_A5));
+  Serial.print(" RIGHT : ");Serial.println(Analog_Sensor(RIGHT_PIN_A4));
   if(pwd_loop()=='1'){
     
    Car_loop("1001 라인전진");

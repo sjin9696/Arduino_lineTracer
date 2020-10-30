@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include "IR_sensor.h"
 
 int sensor_arr[sensor_EA] = {A0,A1,A2,A3};

@@ -1,5 +1,3 @@
-#include <SoftwareSerial.h>
-#include "Arduino.h"
 #include "BT.h"
 
 SoftwareSerial BTSerial(2,3);

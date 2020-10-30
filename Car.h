@@ -1,6 +1,11 @@
 #ifndef Car_h
 #define Car_h
 
+#include "Arduino.h"
+#include "IR_sensor.h"
+#include "BT.h"
+#include "analog_sensor.h"
+
 #define Right_Plus  4
 #define Right_Minus 5
 #define Left_Plus   6
