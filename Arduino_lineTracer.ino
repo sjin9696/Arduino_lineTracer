@@ -7,17 +7,26 @@ void setup() {
 }
 
 void loop() {
-  String result = Sensor_Loop();
-  Car_loop(result);
+  //Car_loop("1001 라인전진");
   Serial.print("LEFT : ");Serial.print(Analog_Sensor(LEFT_PIN_A5));
   Serial.print(" RIGHT : ");Serial.println(Analog_Sensor(RIGHT_PIN_A4));
-  if(pwd_loop()=='1'){
-    
-   Car_loop("1001 라인전진");
-   delay(1000);
+  int val_L = Analog_Sensor(LEFT_PIN_A5);
+  int val_R = Analog_Sensor(RIGHT_PIN_A4);
+  
+  if(val_R >0){
+    Right_Front();
+     if(val_R > 2){
+      Controler(STOP);
+      delay((Analog_Sensor(RIGHT_PIN_A4)));
+    }
   }
-  else{
-    Car_loop("0000 전부 검은색 정지! ");
-    delay(1000);
+  if(val_L >0){
+    Left_Front();
+     if(val_L > 2){
+      Controler(STOP);
+      delay((Analog_Sensor(LEFT_PIN_A5)));
+    }
   }
+ 
+  
 }

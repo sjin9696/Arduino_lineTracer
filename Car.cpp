@@ -6,9 +6,6 @@ void CarInit() {
   pinMode(Right_Minus, OUTPUT);
   pinMode(Left_Plus, OUTPUT);
   pinMode(Left_Minus, OUTPUT);
-
-  pinMode(Right_PWM, OUTPUT);
-  pinMode(Left_PWM, OUTPUT);
 }
 
 void Left_Stop(){
@@ -22,25 +19,21 @@ void Right_Stop(){
   digitalWrite(Right_Minus, LOW);
 }
 void Right_Front(){
-  
   //Serial.println("Right_Front");
   digitalWrite(Right_Plus, HIGH);
   digitalWrite(Right_Minus, LOW);
 }
 void Left_Front(){
-  
   //Serial.println("Left_Front");
   digitalWrite(Left_Plus, HIGH);
   digitalWrite(Left_Minus, LOW);
 }
 void Right_Back(){
-  
   //Serial.println("Right_Back");
   digitalWrite(Right_Plus, LOW);
   digitalWrite(Right_Minus, HIGH);
 }
 void Left_Back(){
-  
   //Serial.println("Left_Back");
   digitalWrite(Left_Plus, LOW);
   digitalWrite(Left_Minus, HIGH);
@@ -91,8 +84,6 @@ void Controler(int n_commend){
 }//void Controler(int commend) 끝
 
 void Car_loop(String result) {
-  analogWrite(Left_PWM, 254);
-  analogWrite(Right_PWM, 254);
   //String result = Sensor_Loop();
  //해결해야될 문제., 라인을 벗어나면 제자리에서 돌아서 라인을 찾도록 하자.  급격한 커브 해결 가능. 
  // 왼쪽 오른쪽 지시 가능.
@@ -101,7 +92,6 @@ void Car_loop(String result) {
       }
   else if(result=="1011 라인살짝벗어남 왼쪽"){
       Controler(LEFT);
-      
   }
   else if(result=="0011 라인살짝벗어남 왼쪽"){
       Controler(LEFT);
@@ -130,7 +120,4 @@ void Car_loop(String result) {
   else if(result=="0000 전부 검은색 정지! "){
       Controler(STOP);
   }
-  //delay(100);
-  //Controler(FRONT);
-  //delay(100);
 }

@@ -6,13 +6,10 @@
 #include "BT.h"
 #include "analog_sensor.h"
 
-#define Right_Plus  4
-#define Right_Minus 5
-#define Left_Plus   6
-#define Left_Minus  7
-
-#define Right_PWM 9
-#define Left_PWM  10
+#define Right_Plus  5
+#define Right_Minus 4
+#define Left_Plus   7
+#define Left_Minus  6
 
 #define STOP  000
 #define FRONT 111
