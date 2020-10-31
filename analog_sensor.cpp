@@ -2,5 +2,5 @@
 
 int Analog_Sensor(void* pin) {
   int val = analogRead(pin);
-  return map(val,0,1023,0,10);
+  return map(val,0,1023,0,100);
 }// void loop() 끝
