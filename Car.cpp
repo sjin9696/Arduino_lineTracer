@@ -39,27 +39,22 @@ void Left_Back(){
   digitalWrite(Left_Minus, HIGH);
 }
 void Stop(){
-    //Serial.println("Stop");
     Right_Stop();
     Left_Stop();
 }
 void Front(){
-    //Serial.println("Front");
     Right_Front();
     Left_Front();
 }
 void Back(){
-    //Serial.println("Back");
     Right_Back();
     Left_Back();
 }
 void Left(){
-  //Serial.println("left");
   Left_Front();
   Right_Back();
 }
 void Right(){
-  //Serial.println("Right");
   Right_Front();
   Left_Back();
 }
