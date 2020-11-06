@@ -2,53 +2,16 @@
 
 int sensor_arr[sensor_EA] = {A0,A1,A2,A3};
 
-String sensor_print(int *val){
-  return ("↖ [" + String(0) + "] :"+ val[0])+
-         (" ▲[" + String(1) + "] :"+ val[1])+
-         (" ▲[" + String(2) + "] :"+ val[2])+
-         ("↗ [" + String(3) + "] :"+ val[3]);
-}
-
-bool Line(int n){
-  return n==LINE_IN;
-}
-
-String Result_Print(int *A){
+//라인 전진 중에 값이 읽히면.. 작업을 진행. 
+void Result_Print(int *A){
+ //0<= 검정선 , 1<= 하얀바닥
+  //1011 왼쪽으로 진행.
+  //0111 왼쪽으로진행
+  //1001 진행
+  //1101 오른쪽으로 진행
+  //1110 오른쪽으로 진행
   /////!A <= 1, A <= 0
-  if(Line(!A[0]) && Line(A[1]) && Line(A[2]) && !Line(A[3])){
-    return "1001 라인전진";  
-  }
-  if(Line(!A[0]) && Line(A[1]) && !Line(A[2]) && !Line(A[3])){
-    return "1011 라인살짝벗어남 왼쪽";  
-  }
-  if(Line(A[0]) && Line(A[1]) && !Line(A[2]) && !Line(A[3])){
-    return "0011 라인살짝벗어남 왼쪽";  
-  }
-  if(Line(!A[0]) && !Line(A[1]) && Line(A[2]) && Line(A[3])){
-    return "1100 라인살짝벗어남 오른쪽";  
-  }
-  if(Line(!A[0]) && !Line(A[1]) && Line(A[2]) && !Line(A[3])){
-    return "1101 라인살짝벗어남 오른쪽";  
-  }
-  if(Line(A[0]) && Line(A[1]) && Line(A[2]) && !Line(A[3])){
-    return "0001 라인많이OUT 왼쪽커브";  
-  }
-  if(Line(A[0]) && !Line(A[1]) && !Line(A[2]) && !Line(A[3])){
-    return "0111 라인많이OUT 왼쪽커브";  
-  }
-  if(!Line(A[0]) && Line(A[1]) && Line(A[2]) && Line(A[3])){
-    return "1000 라인많이OUT 오른쪽";  
-  }
-  if(Line(!A[0]) && !Line(A[1]) && !Line(A[2]) && Line(A[3])){
-    return "1110 라인많이OUT 오른쪽";  
-  }
-  if(!Line(A[0]) && !Line(A[1]) && !Line(A[2]) && !Line(A[3])){
-    return "1111 라인없음 좌로회전 전진 우로회전 전진";  
-  }
-  if(Line(A[0]) && Line(A[1]) && Line(A[2]) && Line(A[3])){
-    return "0000 전부 검은색 정지! ";      
-  }
-  return "def";
+  Serial.println(String(A[0])+String(A[1])+String(A[2])+String(A[3]));
 }
 
 void Init(int *A){
@@ -69,7 +32,6 @@ void Init_Setup() {
 String Sensor_Loop() {
   int val_arr[sensor_EA] = {0};
   Init(val_arr);
-  //Serial.println(sensor_print(val_arr));
-  Serial.println(Result_Print(val_arr));
-  return Result_Print(val_arr);
+//  Result_Print(val_arr);
+  return String(!val_arr[0])+String(!val_arr[1])+String(!val_arr[2])+String(!val_arr[3]);
 }// void loop() 끝

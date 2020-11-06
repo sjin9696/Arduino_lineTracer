@@ -1,12 +1,13 @@
 #include "Car.h"
+#include "Flasher.h"
+
+Flasher interver1(12,1000,5000);
 
 void setup() {
   pwd_setup();
   CarInit();
   Init_Setup();
 }
-
 void loop() {
-  String sensor = Sensor_Loop();
-  Car_loop(sensor);
+ Car_loop(Sensor_Loop());
 }

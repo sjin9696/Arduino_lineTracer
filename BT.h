@@ -5,6 +5,6 @@
 #include "Arduino.h"
 
 void pwd_setup();
-char pwd_loop();
+String pwd_loop();
 
 #endif

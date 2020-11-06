@@ -12,14 +12,15 @@
     unsigned long currentMillis = millis();
     if((ledState == HIGH) && (currentMillis - previousMillis >= OnTime))
     {
+      Serial.println();
       ledState = LOW;
       previousMillis = currentMillis;
-      digitalWrite(ledPin, ledState);
+//      digitalWrite(ledPin, ledState);
     }
     else if ((ledState == LOW) && (currentMillis - previousMillis >= OffTime))
     {
       ledState = HIGH;
       previousMillis = currentMillis;
-      digitalWrite(ledPin, ledState);
+//      digitalWrite(ledPin, ledState);
     }
   }
