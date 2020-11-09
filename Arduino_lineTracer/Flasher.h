@@ -2,13 +2,14 @@
 #define Flasher_h
 
 #include "Arduino.h"
-
+#include "MP3.h"
 class Flasher {
   int ledPin;
   long OnTime;
   long OffTime;
   int ledState;
   unsigned long previousMillis;
+   bool Flasher::DoIt(unsigned long time_);
   public:Flasher(int pin, long on, long off);
   public:void Update();
 };

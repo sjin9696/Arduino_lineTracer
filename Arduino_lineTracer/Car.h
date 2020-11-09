@@ -4,6 +4,7 @@
 #include "Arduino.h"
 #include "IR_sensor.h"
 #include "BT.h"
+#include "MP3.h"
 
 #define Right_Plus  5
 #define Right_Minus 4

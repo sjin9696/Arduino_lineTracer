@@ -6,5 +6,5 @@
 
 //선언부
 void MP3setup(int vloumeValue);
-void MP3loop(int A);
+void MP3Play(int A);
 #endif

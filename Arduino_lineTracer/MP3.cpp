@@ -19,8 +19,8 @@ void MP3setup(int volumeValue)
   MP3Player.volume(volumeValue);  // 볼륨을 조절합니다. 0~30까지 설정이 가능합니다.
 }
 
-void MP3loop(int A)
+void MP3Play(int A)
 {
   MP3Player.play(A);  // 0001.mp3를 재생합니다.
-  delay(3000);
+  delay(3000);  // 개선대상 - 딜레이시 아무것도 작동안함.
 }
