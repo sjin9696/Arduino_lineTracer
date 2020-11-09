@@ -29,5 +29,5 @@ void Back();
 void Left();
 void Right();
 void Controler(int n_commend);
-void Car_loop(String result);
+void Auto_Car_loop(String result);
 #endif

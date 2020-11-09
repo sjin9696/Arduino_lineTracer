@@ -2,7 +2,7 @@
 #define RGBColorSensor_H
 
 #include <Wire.h>
-#include <SparkFun_APDS9960.h>
+//#include <SparkFun_APDS9960.h>
 
 void RGBsensor_setup() ;
 String RGBsensor_loop();

@@ -1,8 +1,8 @@
 #include "choumpa.h"
 #include "arduino.h"
 
-int trigPin = 15;                  // 초음파 센서
-int echoPin = 14;                  // 초음파 센서
+int trigPin = 13;                  // 초음파 센서
+int echoPin = 12;                  // 초음파 센서
 
 void Ultrasonicsetup() {
   pinMode(trigPin, OUTPUT);
