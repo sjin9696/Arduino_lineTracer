@@ -34,18 +34,30 @@ void pwd_loop() {
   if (lastBT == 'a') {
 
     while (Sensor_Loop() != 'u') {
-      if (Sensor_Loop() == 'u') {
-        break;
+      choumpa.Update();
+      if (choumpa.distance >= distance_ultra) {
+        if (Sensor_Loop() == 'u') {
+          break;
+        }
+        if (Sensor_Loop() == 'l') {
+          Left();
+        }
+        else if (Sensor_Loop() == 'r') {
+          Right();
+        }
       }
-      if (Sensor_Loop() == 'l') {
-        Left();
-      }
-      else if (Sensor_Loop() == 'r') {
-        Right();
+      else {
+        Stop();
       }
     }
     while (Sensor_Loop() == 'u') {
-      Front();
+      choumpa.Update();
+      if (choumpa.distance >= distance_ultra) {
+        Front();
+      }
+      else{
+        Stop();
+      }
       if (Sensor_Loop() == 'r' || 'l') {
         break;
       }
