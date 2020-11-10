@@ -2,18 +2,23 @@
 #include "Car.h"
 #include "choumpa.h"
 
+choumpa choumpa(11, 1, 1000);
+
 SoftwareSerial BTSerial(2, 3);
 char nowBT;
 char lastBT;
+float distance_ultra = 15.00;
 
 void pwd_setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   BTSerial.begin(9600);
   pinMode(13, OUTPUT);
+
 }
 
 void pwd_loop() {
+  choumpa.Update();
   // put your main code here, to run repeatedly:
   if (BTSerial.available()) {
     Serial.println("들어오나?");
@@ -24,7 +29,7 @@ void pwd_loop() {
     }
   }
   if (lastBT == 'a') {
-    if (UltrasonicSensor() >= 10.00) {
+    if (choumpa.distance >= distance_ultra) {
       Auto_Car_loop(Sensor_Loop());
       Serial.println("Auto");
     }
@@ -38,10 +43,11 @@ void pwd_loop() {
     switch (nowBT) {
       case 'u': // 전진
         while (BTSerial.read() != 'U') {
-          if (UltrasonicSensor() >= 10.00) {
+          choumpa.Update();
+          if (choumpa.distance >= distance_ultra) {
+            Serial.println("distance" + (String)choumpa.distance);
             Controler(FRONT);
             Serial.println("전진");
-            delay(5);
           }
           else {
             Stop();
@@ -50,34 +56,34 @@ void pwd_loop() {
         break;
       case 'd': // 후진
         while (BTSerial.read() != 'D') {
-          if (UltrasonicSensor() >= 10.00) {
+          choumpa.Update();
+          if (choumpa.distance >= distance_ultra) {
             Controler(BACK);
             Serial.println("후진");
-            delay(5);
           }
           else {
             Stop();
           }
         }
         break;
-      case 'r': // 우회전
+      case 'r': // 좌회전
         while (BTSerial.read() != 'R') {
-          if (UltrasonicSensor() >= 10.00) {
-            Controler(RIGHT);
-            Serial.println("우회전");
-            delay(5);
-          }
-          else {
-            Stop();
-          }
-        }
-        break;
-      case 'l': //좌회전
-        while (BTSerial.read() != 'L') {
-          if (UltrasonicSensor() >= 10.00) {
+          choumpa.Update();
+          if (choumpa.distance >= distance_ultra) {
             Controler(LEFT);
             Serial.println("좌회전");
-            delay(5);
+          }
+          else {
+            Stop();
+          }
+        }
+        break;
+      case 'l': //우회전
+        while (BTSerial.read() != 'L') {
+                    choumpa.Update();
+          if (choumpa.distance >= distance_ultra) {
+            Controler(RIGHT);
+            Serial.println("우회전");
           }
           else {
             Stop();
@@ -87,6 +93,5 @@ void pwd_loop() {
     }
   }
   nowBT = 'c';
-  delay(100);
   Stop();
 }
