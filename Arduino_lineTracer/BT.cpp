@@ -1,8 +1,10 @@
 #include "BT.h"
 #include "Car.h"
 #include "choumpa.h"
+#include "servo_rift_ing.h"
+#include "RGBColorSensor.h"
 
-choumpa choumpa(11, 1, 10);
+choumpa choumpa(11, 1, 10); // new choumpa(); 인스턴스만들어서
 
 SoftwareSerial BTSerial(2, 3);
 char nowBT;
@@ -15,9 +17,8 @@ void pwd_setup() {
   BTSerial.begin(9600);
   pinMode(13, OUTPUT);
 }
-
 void pwd_loop() {
-  choumpa.Update();
+  choumpa.Update(); //갱신
 
   // put your main code here, to run repeatedly:
   if (BTSerial.available()) {
@@ -32,20 +33,47 @@ void pwd_loop() {
     }
   }
   if (lastBT == 'a') {
-
     while (Sensor_Loop() != 'u') {
-      if (Sensor_Loop() == 'u') {
-        break;
+      choumpa.Update();
+      if (RGBsensor_loop() == "Blue")
+      {
+        RiftUp();
       }
-      if (Sensor_Loop() == 'l') {
-        Left();
+      else if (RGBsensor_loop() == "Red")
+      {
+        RiftDown();
       }
-      else if (Sensor_Loop() == 'r') {
-        Right();
+      if (choumpa.distance >= distance_ultra) {
+        if (Sensor_Loop() == 'u') {
+          break;
+        }
+        if (Sensor_Loop() == 'l') {
+          Left();
+        }
+        else if (Sensor_Loop() == 'r') {
+          Right();
+        }
+      }
+      else {
+        Stop();
       }
     }
     while (Sensor_Loop() == 'u') {
-      Front();
+      if (RGBsensor_loop() == "Blue")
+      {
+        RiftUp();
+      }
+      else if (RGBsensor_loop() == "Red")
+      {
+        RiftDown();
+      }
+      choumpa.Update();
+      if (choumpa.distance >= distance_ultra) {
+        Front();
+      }
+      else {
+        Stop();
+      }
       if (Sensor_Loop() == 'r' || 'l') {
         break;
       }
@@ -74,6 +102,13 @@ void Control_Car(int val) {
       break;
     case 'l': //우회전
       BT_Check_Car_act('L', RIGHT);
+      break;
+    case 'z': // 리프트업
+      RiftUp();
+      Serial.println("리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업리프트업");
+      break;
+    case 'x': // 리프트 다운
+      RiftDown();
       break;
   }
 }

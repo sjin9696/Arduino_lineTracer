@@ -3,6 +3,8 @@
 #include "choumpa.h"
 #include "RGBColorSensor.h"
 #include "MP3.h"
+#include "servo_rift_ing.h"
+#include "RGBColorSensor.h"
 
 Flasher interver1(12, 1000, 5000);
 
@@ -11,7 +13,8 @@ void setup() {
   CarInit();
   Init_Setup();
   Ultrasonicsetup();
-//  RGBsensor_setup() ;
+  RiftSetup();
+  RGBsensor_setup() ;
 //  MP3setup(30);
 
 }
