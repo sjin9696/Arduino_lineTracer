@@ -55,8 +55,8 @@ String RGBsensor_loop() {
         color = i;
       }
     }
-    Serial.print(" Color: ");
-    Serial.print(color);
+    //Serial.print(" Color: ");
+    //Serial.print(color);
     if (color == 0) {
       res = "Red";
       Serial.print(" Red ");
@@ -64,11 +64,11 @@ String RGBsensor_loop() {
       res = "Green";
       Serial.print(" Green ");
     } else if (color == 2) {
-      Serial.print(" Blue ");
+      Serial.println(" Blue ");
       res = "Blue";
     }
-    Serial.print(" MAX: ");
-    Serial.print(largest);
+    //Serial.print(" MAX: ");
+    //Serial.print(largest);
   }
   return res;
   // Wait 1 second before next reading
